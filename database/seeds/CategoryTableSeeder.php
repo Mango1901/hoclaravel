@@ -22,28 +22,19 @@ class CategoryTableSeeder extends Seeder
         return
         [
             [
-                'category_name'=> 'GamePad',
-                'category_slug'=> 'GamePad',
-                'category_description'=>'GamePad',
-                'meta_keywords'=>'GamePad',
-                'category_parent'=> '0',
-                'category_status'=>'2'
+                'category_name'=> 'Đồ uống',
+                'category_description'=>'Đồ uống',
+                'category_status'=>'1'
             ],
             [
-                'category_name'=> 'Xbox-360',
-                'category_slug'=> 'xbox-360',
-                'category_description'=>'xbox-360',
-                'meta_keywords'=>'xbox-360',
-                'category_parent'=> '1',
-                'category_status'=>'2'
+                'category_name'=> 'Đồ ăn nhanh',
+                'category_description'=>'Đồ ăn nhanh',
+                'category_status'=>'1'
             ],
             [
-                'category_name'=> 'Ps4',
-                'category_slug'=> 'Ps4',
-                'category_description'=>'Ps4',
-                'meta_keywords'=>'Ps4',
-                'category_parent'=> '1',
-                'category_status'=>'2'
+                'category_name'=> 'Món tráng miệng',
+                'category_description'=>'Món tráng miệng',
+                'category_status'=>'1'
             ]
         ];
     }

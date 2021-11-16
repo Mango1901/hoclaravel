@@ -18,9 +18,8 @@ class Customer_Controller extends Controller
         $meta_keywords ="" ;
         $meta_title ="" ;
         $url_canonical = $request->url();
-        $category_product = DB::table('tbl_category')->orderby('category_id','desc')->where('category_status','2')->get();
-        $brand_product = DB::table('tbl_brand')->orderby('brand_id','desc')->where('brand_status','2')->get();
-        return view('Home.customer_details.login-checkout')->with('category_product',$category_product)->with('brand_product',$brand_product)
+        $category_product = DB::table('category')->orderby('category_id','desc')->where('category_status','2')->get();
+        return view('Home.customer_details.login-checkout')->with('category_product',$category_product)
             ->with('meta_description',$meta_description)->with('meta_keywords',$meta_keywords)
             ->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider);
     }
@@ -32,7 +31,7 @@ class Customer_Controller extends Controller
         $data['customer_password'] =md5($request->customer_password);
         $data['customer_address'] = $request->customer_address;
         $data['customer_phone'] = $request->customer_phone;
-       $customer_id=DB::table('tbl_customer')->insertgetid($data);
+       $customer_id=DB::table('customer')->insertgetid($data);
        session::put('customer_id',$customer_id);
         return redirect::to('/add-to-cart');
     }
@@ -40,7 +39,7 @@ class Customer_Controller extends Controller
     {
         $customer_email = $request->customer_email;
         $customer_password = md5($request->customer_password);
-     $result = DB::Table('tbl_customer')->where('customer_email',$customer_email)->where('customer_password',$customer_password)->first();
+     $result = DB::Table('customer')->where('customer_email',$customer_email)->where('customer_password',$customer_password)->first();
      $customer_id = $result->customer_id;
      session::put('customer_id',$customer_id);
      Cookie::get('customer_id',$customer_id);

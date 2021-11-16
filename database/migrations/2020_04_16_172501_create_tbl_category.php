@@ -13,8 +13,8 @@ class CreateTblCategory extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_category', function (Blueprint $table) {
-            $table->Increments('category_id');
+        Schema::create('category', function (Blueprint $table) {
+            $table->id('id');
             $table->String('category_name');
             $table->String('category_description');
             $table->Integer('category_status');
@@ -30,6 +30,6 @@ class CreateTblCategory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_category');
+        Schema::dropIfExists('category');
     }
 }

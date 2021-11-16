@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Banner;
-use App\Brand;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
@@ -28,8 +27,7 @@ class Product_Controller extends Controller
     {
         $this->auth_login();
         $category_product = Category::orderby('category_id','DESC')->get();
-        $brand_product = Brand::orderby('brand_id','DESC')->get();
-        return view('admin.Product.add_product')->with('category_product',$category_product)->with('brand_product',$brand_product);
+        return view('admin.Product.add_product')->with('category_product',$category_product);
     }
     public function save_product(Request $request)
     {
@@ -37,7 +35,6 @@ class Product_Controller extends Controller
         $data = $request->all();
         $product = new Product();
         $product->product_name =  $data['product_name'];
-        $product->brand_id =  $data['brand_name'];
         $product->category_id =  $data['category_name'];
         $product->product_quantity =  $data['product_quantity'];
         $product->product_price =  $data['product_price'];
@@ -64,8 +61,7 @@ class Product_Controller extends Controller
     public function all_product()
     {
         $this->auth_login();
-        $all_product = Product::join('tbl_category','tbl_category.category_id','=','tbl_product.category_id')
-            ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->get();
+        $all_product = Product::join('category','category.category_id','=','product.category_id');
         return view('admin.Product.all_product')->with('all_product',$all_product);
     }
     public function non_active_product($product_id)
@@ -89,8 +85,7 @@ class Product_Controller extends Controller
     public function edit_product($product_id)
     {
         $this->auth_login();
-       $edit_product = Product::join('tbl_category','tbl_category.category_id','=','tbl_product.category_id')
-            ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->where('product_id',$product_id)->get();
+       $edit_product = Product::join('category','category.category_id','=','product.category_id')->where('product_id',$product_id)->get();
         return view('admin.Product.edit_product')->with('edit_product',$edit_product);
     }
     public function update_product(Request $request,$product_id)
@@ -101,7 +96,6 @@ class Product_Controller extends Controller
 
         $product->product_name =  $data['product_name'];
 
-        $product->brand_id =  $data['brand_name'];
         $product->category_id =  $data['category_name'];
         $product->product_quantity =  $data['product_quantity'];
         $product->product_price =  $data['product_price'];
@@ -131,9 +125,7 @@ class Product_Controller extends Controller
     {
         $slider = Banner::orderby('slider_id','DESC')->get();
         $category_product = Category::orderby('category_id','desc')->where('category_status','2')->get();
-        $brand_product = Brand::orderby('brand_id','desc')->where('brand_status','2')->get();
-        $show_details = Product::join('tbl_category','tbl_category.category_id','=','tbl_product.category_id')
-            ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        $show_details = Product::join('category','category.category_id','=','product.category_id')
             ->where('product_id',$product_id)->get();
 
         foreach($show_details as $key=>$value){
@@ -144,11 +136,10 @@ class Product_Controller extends Controller
             $url_canonical = $request->url();
 
         }
-        $related_product = Product::join('tbl_category','tbl_category.category_id','=','tbl_product.category_id')
-            ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-            ->where('tbl_category.category_id',$category_id)
+        $related_product = Product::join('category','category.category_id','=','product.category_id')
+            ->where('category.category_id',$category_id)
             ->whereNotIn('product_id',[$product_id])->limit(3)->get();
-        return view('Home.details.show_details')->with('category_product',$category_product)->with('brand_product',$brand_product)
+        return view('Home.details.show_details')->with('category_product',$category_product)
             ->with('show_details',$show_details)->with('related_product',$related_product)->with('meta_description',$meta_description)->with('meta_keywords',$meta_keywords)
             ->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider);
     }

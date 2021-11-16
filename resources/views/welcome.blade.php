@@ -227,23 +227,11 @@
                         <div class="panel panel-default">
                             @foreach($category_product as $key=>$cate_pro)
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{URL::to('/show-category/'.$cate_pro->category_id)}}">{{$cate_pro->category_name}}</a></h4>
+                                <h4 class="panel-title"><a href="{{URL::to('/show-category/'.$cate_pro->id)}}">{{$cate_pro->category_name}}</a></h4>
                             </div>
                             @endforeach
                         </div>
                     </div><!--/category-products-->
-
-
-                    <div class="brands_products"><!--brands_products-->
-                        <h2>Brands</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-                                @foreach($brand_product as $key=>$brand_pro)
-                                <li><a href="{{URL::to('/show-brand/'.$brand_pro->brand_id)}}"> <span class="pull-right"></span>{{$brand_pro->brand_name}}</a></li>
-                                    @endforeach
-                            </ul>
-                        </div>
-                    </div><!--/brands_products-->
 
                     <div class="shipping text-center"><!--shipping-->
                         <img src="{{URL::to('style/frontend/images/home/shipping.jpg')}}" alt="" />

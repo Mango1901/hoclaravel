@@ -24,11 +24,9 @@ class Home_Controller extends Controller
        $meta_title = "BeLiBo Store - GamePad World for everybody";
         $url_canonical = $request->url();
 
-        $category_product = DB::Table('tbl_category')->orderby('category_id','desc')->where('category_status','2')->get();
-        $brand_product = DB::Table('tbl_brand')->orderby('brand_id','desc')->where('brand_status','2')->get();
-        $all_product = DB::table('tbl_product')->join('tbl_category','tbl_category.category_id','=','tbl_product.category_id')
-            ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')->get();
-        return view('Home.home')->with('category_product',$category_product)->with('brand_product',$brand_product)->with('all_product',$all_product)
+        $category_product = DB::Table('category')->orderby('id','desc')->where('category_status','1')->get();
+        $all_product = DB::table('product')->join('category','category.id','=','product.category_id')->get();
+        return view('Home.home')->with('category_product',$category_product)->with('all_product',$all_product)
             ->with('meta_description',$meta_description)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider);
     }
     public function show_search(Request $request)
@@ -40,12 +38,10 @@ class Home_Controller extends Controller
         $url_canonical = $request->url();
 
         $keywords = session::get('keywords');
-        $category_product = DB::Table('tbl_category')->orderby('category_id','desc')->where('category_status','2')->get();
-        $brand_product = DB::Table('tbl_brand')->orderby('brand_id','desc')->where('brand_status','2')->get();
-        $show_search =  DB::table('tbl_product')->join('tbl_category','tbl_category.category_id','=','tbl_product.category_id')
-            ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        $category_product = DB::Table('category')->orderby('id','desc')->where('category_status','1')->get();
+        $show_search =  DB::table('product')->join('category','category.id','=','product.category_id')
             ->where('product_name','like','%'.$keywords.'%')->get();
-        return view('Home.search.search')->with('category_product',$category_product)->with('brand_product',$brand_product)
+        return view('Home.search.search')->with('category_product',$category_product)
             ->with('show_search',$show_search)->with('meta_description',$meta_description)->with('meta_keywords',$meta_keywords)
             ->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider);
     }
@@ -53,7 +49,7 @@ class Home_Controller extends Controller
     {
         $keywords = $request->search_submit;
         session::put('keywords',$keywords);
-        DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->first();
+        DB::table('product')->where('product_name','like','%'.$keywords.'%')->first();
         return redirect::to('/show-search');
     }
     public function send_mail()

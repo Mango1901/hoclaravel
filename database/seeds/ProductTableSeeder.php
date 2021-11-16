@@ -22,16 +22,12 @@ class ProductTableSeeder extends Seeder
         [
           [
               'category_id'=>'1',
-              'brand_id'=>'1',
-              'product_name'=>'Iphone',
-              'product_price'=>'10000000',
-              'product_image'=>'download4990.png',
-              'product_quantity'=>'100',
-              'product_sold'=>'0',
-              'meta_product_keywords'=>'Iphone',
-              'product_description'=>'Iphone',
-              'product_content'=>'Iphone',
-              'product_status'=>'2'
+              'name'=>'Trà Sữa',
+              "price"=>"50000",
+              'image'=>'download4990.png',
+              'description'=>'Iphone',
+              'content'=>'Iphone',
+              'status'=>'2'
           ]
         ];
     }
