@@ -40,18 +40,18 @@
                            <?php
                                     if($cate_pro->category_status == 1){
                                     ?>
-                              <a href="{{URL::to('active-category/'.$cate_pro->category_id)}}" style="font-size: 30px;color:red">Off</a>
+                              <a href="{{URL::to('active-category/'.$cate_pro->id)}}" style="font-size: 30px;color:red">Off</a>
                            <?php
                                     } else {
                                     ?>
-                               <a href="{{URL::to('non-active-category/'.$cate_pro->category_id)}}" style="font-size: 30px;color:blue;">Onl</a>
+                               <a href="{{URL::to('non-active-category/'.$cate_pro->id)}}" style="font-size: 30px;color:blue;">Onl</a>
                                <?php
                                     }
                                     ?>
                             </span></td>
                             <td>
-                                <a href="{{URL::to('edit-category/'.$cate_pro->category_id)}}" class="active"  style="font-size:15px;color:blue">Edit</a>
-                                <a href="{{URL::to('delete-category/'.$cate_pro->category_id)}}"class="active"  style="font-size: 15px;color:red" onclick="return confirm('Are you want to delete?')">Delete</a>
+                                <a href="{{URL::to('edit-category/'.$cate_pro->id)}}" class="active"  style="font-size:15px;color:blue">Edit</a>
+                                <a href="{{URL::to('delete-category/'.$cate_pro->id)}}"class="active"  style="font-size: 15px;color:red" onclick="return confirm('Are you want to delete?')">Delete</a>
                             </td>
                         </tr>
                     @endforeach

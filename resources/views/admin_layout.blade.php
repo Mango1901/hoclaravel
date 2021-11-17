@@ -89,32 +89,11 @@
                     <li class="sub-menu">
                         <a href="javascript:">
                             <i class="fa fa-tasks"></i>
-                            <span>Slider</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{URL::to('/add-slider')}}">Add Slider</a></li>
-                            <li><a href="{{URL::to('/manage-slider')}}">Slider List</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:">
-                            <i class="fa fa-tasks"></i>
                             <span>Category</span>
                         </a>
                         <ul class="sub">
                             <li><a href="{{URL::to('/add-category')}}">Add Category</a></li>
                             <li><a href="{{URL::to('category-list')}}">Category List</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-tasks"></i>
-                            <span>Brand</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{URL::to('/add-brand')}}">Add Brand</a></li>
-                            <li><a href="{{URL::to('/brand-list')}}">Brand List</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -125,36 +104,6 @@
                         <ul class="sub">
                             <li><a href="{{URL::to('/add-product')}}">Add Product</a></li>
                             <li><a href="{{URL::to('/product-list')}}">Product List</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:">
-                            <i class="fa fa-tasks"></i>
-                            <span>Discount Code</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{URL::to('/insert-coupon')}}">Add Code</a></li>
-                            <li><a href="{{URL::to('coupon-list')}}">Code List</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:">
-                            <i class="fa fa-tasks"></i>
-                            <span>Delivery</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{URL::to('/add-delivery')}}">Add Delivery</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Order</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{URL::to('/manage-order')}}">Order List</a></li>
-
-
                         </ul>
                     </li>
                 </ul>            </div>

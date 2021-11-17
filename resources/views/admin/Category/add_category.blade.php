@@ -23,10 +23,6 @@
                     <textarea name="category_description" rows="8" data-validation="length" data-validation-length="min3" class="form-control" id="ckEditor"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Keywords</label>
-                    <textarea name="meta_keywords" rows="8" data-validation="length" data-validation-length="min3" class="form-control" id="ckEditor8"></textarea>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputFile">Status</label>
                 </div>
                 <select name="category_status" class="form-control input-sm m-bot15">

@@ -8,7 +8,7 @@ class Product extends Model
 {
     public $timestamps = false;
     protected $fillable=[
-        'category_id','brand_id','name','price','image','description','content','status'
+        'category_id','name','price','image','description','content','status'
     ];
     protected $primaryKey = 'id';
     protected $table = 'product';
@@ -16,9 +16,5 @@ class Product extends Model
     public function Category()
     {
         return $this->belongsTo('App\Category','category_id','id');
-    }
-    public function Brand()
-    {
-        return $this->belongsTo('App\Brand','brand_id');
     }
 }

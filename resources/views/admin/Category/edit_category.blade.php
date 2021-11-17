@@ -6,7 +6,7 @@
         </header>
         <div class="position-center">
             @foreach($edit_category as $key=>$value_category)
-            <form action="{{URL::to('/update-category/'.$value_category->category_id)}}" method="post">
+            <form action="{{URL::to('/update-category/'.$value_category->id)}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="exampleInputEmail1">CategoryName</label>

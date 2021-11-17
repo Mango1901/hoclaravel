@@ -35,9 +35,6 @@ class UsersTableSeeder extends Seeder
             'admin_email' => 'deagleka3@gmail.com',
             'admin_password'=> md5('123456'),
         ]);
-        $admin->roles()->attach($adminRoles);
-        $author->roles()->attach($authorRoles);
-        $user->roles()->attach($userRoles);
 
     }
 }
