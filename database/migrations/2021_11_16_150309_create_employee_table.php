@@ -22,7 +22,9 @@ class CreateEmployeeTable extends Migration
             $table->string("sex");
             $table->timestamps();
         });
-
+        Schema::table('order', function (Blueprint $table) {
+            $table->foreign('employee_id')->references('id')->on('employee')->cascadeOnDelete();
+        });
     }
 
     /**

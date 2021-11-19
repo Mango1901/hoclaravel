@@ -15,7 +15,7 @@ class CreateTblProduct extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('category_id');
+            $table->bigInteger('category_id')->unsigned();
             $table->string('name');
             $table->string('price');
             $table->string('description');
@@ -23,6 +23,10 @@ class CreateTblProduct extends Migration
             $table->string('image');
             $table->integer('status');
             $table->timestamps();
+        });
+
+        Schema::table('product', function (Blueprint $table) {
+            $table->foreign('category_id')->references('id')->on('category')->cascadeOnDelete();
         });
     }
 

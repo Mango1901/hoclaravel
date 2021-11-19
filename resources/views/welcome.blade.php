@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{$meta_description}}">
-    <meta name="keywords" content="{{$meta_keywords}}"/>
     <meta name="robots" content="INDEX,FOLLOW"/>
     <link  rel="canonical" href="{{$url_canonical}}" />
     <link  rel="icon" type="image/x-icon" href="" />
@@ -262,7 +261,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{URL::to('style/frontend/images/home/iframe1.png')}}" alt="" />
+                                    <img src="{{URL::to('style/frontend/images/home/20e2301893405352ceb3984471d609fb.jpg')}}" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -277,7 +276,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{URL::to('style/frontend/images/home/iframe2.png')}}" alt="" />
+                                    <img src="{{URL::to('style/frontend/images/home/8934803011258.jpg')}}" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -292,7 +291,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{URL::to('style/frontend/images/home/iframe3.png')}}" alt="" />
+                                    <img src="{{URL::to('style/frontend/images/home/do-an-nhanh-gay-vo-sinh-o-nam-gioi.jpg')}}" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -307,7 +306,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{URL::to('style/frontend/images/home/iframe4.png')}}" alt="" />
+                                    <img src="{{URL::to('style/frontend/images/home/S7995dbf695124161aa6621c02aabf7f8p.jpg')}}" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>

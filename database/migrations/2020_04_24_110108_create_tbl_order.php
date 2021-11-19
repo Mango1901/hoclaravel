@@ -15,11 +15,14 @@ class CreateTblOrder extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id('order_id');
-            $table->Integer('customer_id');
-            $table->Integer('employee_id');
+            $table->bigInteger('customer_id')->unsigned();
+            $table->bigInteger('employee_id')->unsigned();
             $table->String('order_total');
             $table->Integer('order_status');
             $table->timestamps();
+        });
+        Schema::table('order', function (Blueprint $table) {
+            $table->foreign('customer_id')->references('id')->on('customer')->cascadeOnDelete();
         });
     }
 

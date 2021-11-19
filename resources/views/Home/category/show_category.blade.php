@@ -10,9 +10,9 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{URL::to('style/uploads/product/'.$value_category->product_image)}}"width="120" height="150" alt="" />
-                        <h2>{{number_format($value_category->product_price)}} VNĐ</h2>
-                        <p>{{$value_category->product_name}}</p>
+                        <img src="{{URL::to('style/uploads/product/'.$value_category->image)}}"width="120" height="150" alt="" />
+                        <h2>{{number_format($value_category->price)}} VNĐ</h2>
+                        <p>{{$value_category->name}}</p>
                         <a href="{{URL::to('/product-details/'.$value_category->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Show Details</a>
                     </div>
                 </div>

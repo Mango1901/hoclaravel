@@ -131,23 +131,22 @@ class Product_Controller extends Controller
     public function product_details(Request $request, $product_id)
     {
         $slider           = Banner::orderby('slider_id', 'DESC')->get();
-        $category_product = Category::orderby('category_id', 'desc')->where('category_status', '2')->get();
-        $show_details     = Product::join('category', 'category.category_id', '=', 'product.category_id')
+        $category_product = Category::orderby('id', 'desc')->where('category_status', '1')->get();
+        $show_details     = Product::select("product.id","product.image","product.name","product.price","category.category_name")->join('category', 'category.id', '=', 'product.category_id')
                                    ->where('product.id', $product_id)->get();
 
         foreach ($show_details as $key => $value) {
             $category_id      = $value->category_id;
             $meta_description = $value->product_description;
-            $meta_keywords    = $value->meta_product_keywords;
             $meta_title       = $value->product_name;
             $url_canonical    = $request->url();
 
         }
-        $related_product = Product::join('category', 'category.category_id', '=', 'product.category_id')
-                                  ->where('category.category_id', $category_id)
+        $related_product = Product::join('category', 'category.id', '=', 'product.id')
+                                  ->where('category.id', $category_id)
                                   ->whereNotIn('product.id', [$product_id])->limit(3)->get();
         return view('Home.details.show_details')->with('category_product', $category_product)
-                                                ->with('show_details', $show_details)->with('related_product', $related_product)->with('meta_description', $meta_description)->with('meta_keywords', $meta_keywords)
+                                                ->with('show_details', $show_details)->with('related_product', $related_product)->with('meta_description', $meta_description)
                                                 ->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('slider', $slider);
     }
 

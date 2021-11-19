@@ -91,19 +91,17 @@ class Category_Controller extends Controller
         $url_canonical = $request->url();
 
         $slider = Banner::orderby('slider_id','DESC')->get();
-        $category_product = Category::orderby('id','desc')->where('category_status','2')->get();
-        $brand_product = Brand::orderby('brand_id','desc')->get();
-        $show_category = DB::table('tbl_product')->join('tbl_category','tbl_category.id','=','tbl_product.category_id')
-            ->where('tbl_category.id',$category_id)->where('tbl_product.product_status','2')->get();
+        $category_product = Category::orderby('id','desc')->where('category_status','1')->get();
+        $show_category = DB::table('product')->select("product.id as product_id","product.image","product.price","product.name","category.*")->join('category','category.id','=','product.category_id')
+            ->where('category.id',$category_id)->where('product.status','2')->get();
         if($show_category == true){
         foreach($show_category as $key=>$value){
             $meta_description = $value->category_description;
-            $meta_keywords =$value->meta_keywords ;
             $meta_title =$value->category_name ;
             $url_canonical = $request->url();
         }
         }
-        return view('Home.category.show_category')->with('category_product',$category_product)->with('brand_product',$brand_product)
+        return view('Home.category.show_category')->with('category_product',$category_product)
             ->with('show_category',$show_category)->with('meta_description',$meta_description)->with('meta_keywords',$meta_keywords)
             ->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider);
     }
