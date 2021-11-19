@@ -14,4 +14,7 @@
 4. php artisan key:generate
 5. php artisan migrate -> migrate table
 6. php artisan db:seed -> add sample data
+7. category and product on domain/admin
+
+username: deagleka1@gmail.com password: 123456
 
